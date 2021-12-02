@@ -1,10 +1,13 @@
 package JavaAss;
 
+import javafx.css.Match;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NewUserModel {
     private String email = null;
+    private String password = null;
 
     public void setEmail(String email) {
         if (validateEmail(email)) {
@@ -12,8 +15,18 @@ public class NewUserModel {
         }
     }
 
+    public void setPassword(String password){
+        if (validatePassword(password)){
+            this.password = password;
+        }
+    }
+
     public String getEmail() {
         return this.email;
+    }
+
+    public String getPassword(){
+        return this.password;
     }
 
     public boolean validateEmail(String email){
@@ -26,4 +39,11 @@ public class NewUserModel {
             throw new IllegalArgumentException ("Invalid Email");
         }
     }
+
+    public boolean validatePassword(String password){
+        Pattern passRegex = Pattern.compile("^.*(?=.{7,})(?=..*[0-9])(?=.*[A-Z])(?=.*[*^&@!]).*$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = passRegex.matcher(password);
+        return matcher.matches();
+    }
+
 }
