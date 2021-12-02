@@ -32,7 +32,14 @@ class NewUserModelTest {
     @ValueSource(strings = {"Hello1*", "hel1l&O", "h1e2l*l0o3o5"})
     public void acceptValidPassword(String password){
         model.setPassword(password);
-        assertEquals(password, model.getPassword);
+        assertEquals(password, model.getPassword());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"hello", "hello12", "123*456", "HELLOOO", "HELLOO1"})
+    public void rejectInvalidPassword(String password){
+        assertThrows(IllegalArgumentException.class, () -> {model.setPassword(password);}, "Password must meet specific requirements");
+
     }
 
 }
