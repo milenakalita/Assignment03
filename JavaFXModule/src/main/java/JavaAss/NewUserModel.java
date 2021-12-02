@@ -43,7 +43,12 @@ public class NewUserModel {
     public boolean validatePassword(String password){
         Pattern passRegex = Pattern.compile("^.*(?=.{7,})(?=..*[0-9])(?=.*[A-Z])(?=.*[*^&@!]).*$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = passRegex.matcher(password);
-        return matcher.matches();
+        if (matcher.matches()) {
+            return true;
+        }
+        else{
+            throw new IllegalArgumentException("Invalid Password");
+        }
     }
 
 }
