@@ -21,4 +21,10 @@ class NewUserModelTest {
         model.setEmail(email);
         assertEquals(email, model.getEmail());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123", "hi", "m.kalita@com", "gmail.com", "@outlook", "@eu."})
+    public void rejectInvalidEmail(String email) {
+        assertThrows(IllegalArgumentException.class, () -> {model.setEmail(email);}, "email should have a proper format");
+    }
 }
