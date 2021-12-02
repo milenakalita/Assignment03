@@ -10,6 +10,6 @@ module com.example.javafxmodule {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.example.javafxmodule to javafx.fxml;
-    exports com.example.javafxmodule;
+    opens JavaAss to javafx.fxml;
+    exports JavaAss;
 }
