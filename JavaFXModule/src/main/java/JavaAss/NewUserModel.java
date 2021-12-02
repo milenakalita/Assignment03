@@ -19,6 +19,11 @@ public class NewUserModel {
     public boolean validateEmail(String email){
         Pattern emailRegex = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = emailRegex.matcher(email);
-        return matcher.matches();
+        if (matcher.matches()) {
+            return true;
+        }
+        else{
+            throw new IllegalArgumentException ("Invalid Email");
+        }
     }
 }
