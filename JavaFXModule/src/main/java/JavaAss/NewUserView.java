@@ -5,26 +5,16 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.application.Application;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.io.IOException;
-
-import static javafx.application.Application.launch;
 
 public class NewUserView extends Application implements EventHandler<ActionEvent>{
     public NewUserPresenter presenter;
@@ -130,7 +120,6 @@ public class NewUserView extends Application implements EventHandler<ActionEvent
         gridPane.add(resultMessage, 1, 3);
 
         button.setOnAction(this);
-
 
     }
 

@@ -1,7 +1,6 @@
 package JavaAss;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +11,7 @@ class NewUserModelTest {
 
     @BeforeEach
     void setUp() {
-        model = new NewUserModel();
+        model = new NewUserModel(new NewUserPresenter(null));
     }
 
     @ParameterizedTest
@@ -25,7 +24,7 @@ class NewUserModelTest {
     @ParameterizedTest
     @ValueSource(strings = {"123", "hi", "m.kalita@com", "gmail.com", "@outlook", "@eu."})
     public void rejectInvalidEmail(String email) {
-        assertThrows(IllegalArgumentException.class, () -> {model.setEmail(email);}, "email should have a proper format");
+        assertThrows(IllegalArgumentException.class, () -> model.setEmail(email), "email should have a proper format");
     }
 
     @ParameterizedTest
@@ -38,7 +37,7 @@ class NewUserModelTest {
     @ParameterizedTest
     @ValueSource(strings = {"hello", "hello12", "123*456", "HELLOOO", "HELLOO1"})
     public void rejectInvalidPassword(String password){
-        assertThrows(IllegalArgumentException.class, () -> {model.setPassword(password);}, "Password must meet specific requirements");
+        assertThrows(IllegalArgumentException.class, () -> model.setPassword(password), "Password must meet specific requirements");
 
     }
 

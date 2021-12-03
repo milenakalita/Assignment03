@@ -1,10 +1,5 @@
 package JavaAss;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
-import java.util.Objects;
-
 public class NewUserPresenter extends NewUserView {
     public NewUserModel model;
     public NewUserView view;
@@ -24,7 +19,7 @@ public class NewUserPresenter extends NewUserView {
         passwordResult = this.model.setPassword(password);
         if (emailResult) {
                 if (passwordResult){
-                    System.out.println(passwordResult);
+                    System.out.println(true);
                     message = "Successfully Registered";
                 }
         }
